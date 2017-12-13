@@ -10,10 +10,10 @@ You can gzip them and easily go from $500 to $0, and this is a very good idea un
 
 # How gagarchive helps in this case?
 
-Gagarchive archive consists of 2 files: contents and index. Contents file is simply concatenated file bodies. Index file contains filenames of files in archive and their concents offset from the beginning of the contents file.
+Gagarchive archive consists of 2 files: contents and index. Contents file is simply concatenated file bodies. Index file contains filenames of files in archive and their contents offset from the beginning of the contents file.
 
-So, in order to read specific file from the archive, gagarchive finds it in the index file, and reads it from contents file by using offset it found. Popular file storages often allows you to issue GET requests with Range header, which helps to avoid downloading 1Tb file to get 10k file.
+So, in order to read specific file from the archive, gagarchive finds it in the index file, and reads it from contents file by using offset it found. Popular file storages often allow you to issue GET requests with Range header, which helps to avoid downloading 1Tb file to get 10k file.
 
 > Example. 1T of files with average size of 10Kb archived in 100Mb chunks. This is ~10k of PUT requests to make and ~$50 to pay only for these requests. And now if you want to find some file, you need to read only (some) index files for it. 
 
-It's up to you where to store and how to logically group index files. Usually it depends on how often you want to read from your archives.
+It's up to you where to store (in clouds or locally) and how to logically group index files. Usually it depends on how often you want to read from your archives.
